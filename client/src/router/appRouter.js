@@ -6,7 +6,8 @@ import AccountPages from '../PAGES/AccountPages'
 import ProyectsPages from '../PAGES/ProyectsPages'
 import ProyectPages from '../PAGES/ProyectPages'
 import AdminusertPages from '../PAGES/admin/AdminusertPages'
-import NotPages from '../PAGES/NotPages'
+import NotPages from '../PAGES/NotPages';
+import Layaut from '../Component/Layauts/layaut';
 
 
 
@@ -19,7 +20,7 @@ import NotPages from '../PAGES/NotPages'
 export default function Routers() {
   return (
     <Router>
-   
+      <Layaut>
       <Switch>
         <Route exact path="/" component={HomePages} />
         <Route exact path="/Login" component={LoginPages} />
@@ -31,7 +32,7 @@ export default function Routers() {
 
         <Route exact path="*" component={NotPages} />
       </Switch>
-     
+      </Layaut>
     </Router>
   );
 }

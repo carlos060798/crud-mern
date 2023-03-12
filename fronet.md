@@ -2,7 +2,7 @@
 
 # 1 crear un proyecto
 
---   npx create-react-app 
+--   
 # 2 para levantar  el servidor de react js
 -- npm run star    
 

@@ -6,10 +6,11 @@ import Navigetor from "../Navegador";
  * @returns 
  */
 
-export default function Layau({children}){
+export default function Layaut({children}){
     
     return (
-      <><Navigetor/>
+      <>
+      <Navigetor />
        {children}
     
       </>
