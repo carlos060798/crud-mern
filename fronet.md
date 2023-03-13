@@ -67,5 +67,96 @@ import NotPages from '../PAGES/NotPages'
 --npm install react-bootstrap bootstrap 
 
 -- se hace la importacion de los estilo de booptrap en el index.js
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';  
 
+# creando rutas en el navigator
+import{NavLink}from 'react-router-dom'
+se importa el elemeto Navlik para colocar las rutas en la barra de navEGACION CON LA ATRIBUTO TO
+ <Nav.Link as={NavLink} to="/Proyects"> Proyect   </Nav.Link>
+ se agrega el atributo as={tipo de componete} para decir como se debe renderizar el elemento
+ --
+            
+    
+
+
+# PROTEGIENDO RUTAS  
+
+
+1- Se crea el componente PrivateRouter y se agrega sobre la ruta a proteger
+ <PrivateRoute exact path="/Account" component={AccountPages} />
+2- se crea el componente PrivateRouter en router
+export default function PrivateRoute(props) {
+
+  const User=null;
+   if(!User) return <Redirect to="/Login" />
+  return (
+    <Route {...props} />
+  );
+} 
+
+la funcion devuel el acceso si el usuario existe si no  lo deja en  login
+
+3- se importa appRouter  listo 
+
+# autenticaion de usuario 
+
+1-  en la funcion App() pasamos el contexto global por elemento AuthProvider de cada posible usuario de la aplicacion
+function App() {
+  return (
+   <div>
+    <AuthProvider>
+    <Routers />
+    </AuthProvider>
+    </div>
+  );
+}
+2- se crea el componete  export const AutheContext=CreateContext  AuthProvider este elemento va crear el contexto que se pasa en el app()
+
+
+
+export default function AuthProvider() {
+   
+   const [user,setUser] =useState(null)
+    ContextValue={
+     user
+   }
+    
+    return (
+     <AutheContext value={ContextValue}>
+
+     </AutheContext>
+    );
+  }
+
+  
+3-elevar que esta linea simepre va agenerar el contexto global en un score global
+export const AutheContext=CreateContext 
+
+4-se comnsume el  contexto  global de forma invidual segun cada usuario mediante  el componete userAuth()
+import { useContext } from "react";
+import { AutheContext } from "./AuthProvider";
+
+import { useContext } from "react";
+import { AuthContext } from "./AuthProvider";
+
+
+export default function useAuth() {    
+     return  useContext(AuthContext);
+   } 
+
+5- renderizar los hijo de al AuthProvider  mediante el argumento {children}
+
+export default function AuthProvider({children}) {
+   
+  const [user, setUser] = useState(null);
+ //const [user, setUser] = useState({id:1,role:'regular'});
+  const contextValue={
+     user,
+   }
+    
+    return (
+     <AuthContext.Provider value={contextValue}>
+      { children }
+     </AuthContext.Provider>
+    );
+  }

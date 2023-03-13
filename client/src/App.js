@@ -1,11 +1,20 @@
 import Routers from "./router/appRouter";
+import AuthProvider from "./user/AuthProvider";
 
 
-
-function App() {
+/*
+* @module{<AuthProvider>} le da al apalicaicon un contesto global para consumir
+ a los hijos dierecto del componete <ROUTERS>
+*
+*/
+export default function App() {
   return (
-    <Routers />
+    <div>
+      <AuthProvider>
+        <Routers />
+      </AuthProvider>
+    </div>
   );
 }
 
-export default App;
+

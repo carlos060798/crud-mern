@@ -8,6 +8,7 @@ import ProyectPages from '../PAGES/ProyectPages'
 import AdminusertPages from '../PAGES/admin/AdminusertPages'
 import NotPages from '../PAGES/NotPages';
 import Layaut from '../Component/Layauts/layaut';
+import PrivateRoute from './PrivateRoute'
 
 
 
@@ -16,6 +17,8 @@ import Layaut from '../Component/Layauts/layaut';
 /*
  * FUNCION CONTEENDORAS DE RUTAS
  *  opcion default{ <Route exact path='*'component={NOtPages}/>}
+ * 
+ * @param{PrivateRouter} para proteger las rutas en react 
  */
 export default function Routers() {
   return (
@@ -25,10 +28,10 @@ export default function Routers() {
         <Route exact path="/" component={HomePages} />
         <Route exact path="/Login" component={LoginPages} />
         <Route exact path="/Register" component={RegisterPages} />
-        <Route exact path="/Account" component={AccountPages} />
-        <Route exact path="/Proyects" component={ProyectsPages} />
-        <Route exact path="/Proyect/:Proyectid" component={ProyectPages} />
-        <Route exact path="/Admin/User/Proyects" component={AdminusertPages} />
+        <PrivateRoute exact path="/Account" component={AccountPages} />
+        <PrivateRoute exact path="/Proyects" component={ProyectsPages} />
+        <PrivateRoute exact path="/Proyect/:Proyectid" component={ProyectPages} />
+        <PrivateRoute exact path="/Admin/Users" component={AdminusertPages} />
 
         <Route exact path="*" component={NotPages} />
       </Switch>
