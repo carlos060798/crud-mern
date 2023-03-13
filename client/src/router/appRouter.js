@@ -33,7 +33,7 @@ export default function Routers() {
         <PrivateRoute exact path="/Account" component={AccountPages} />
         <PrivateRoute exact path="/Proyects" component={ProyectsPages} />
         <PrivateRoute exact path="/Proyect/:Proyectid" component={ProyectPages} />
-        <PrivateRoute exact path="/Admin/Users" component={AdminusertPages} />
+        <PrivateRoute hasRole="admin" exact path="/Admin/Users" component={AdminusertPages} />
 
         <Route exact path="*" component={NotPages} />
       </Switch>

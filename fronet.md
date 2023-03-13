@@ -180,3 +180,15 @@ export default function PublicRoute(props) {
         <Route {...props} />
       );
 }
+
+
+# roles de administrador  de cuentas
+1- se modifica el appRouter en  la ruta de administracion de cuenta agregandoe el atributo hasRole="admin" para defefinir el tipo de permimos
+
+ <PrivateRoute hasRole="admin" exact path="/Admin/Users" component={AdminusertPages} />  
+
+2-se  modifica el parametro que recibe el PrivateRoute con el valor hasRole: role
+export default function PrivateRoute({hasRole:role,...props}) 
+
+3- se valida si exite el rol o si es igual al referenciado  inicialmente
+ if(role && user?.role !== role) return <Redirect to="/Login" />
