@@ -98,7 +98,7 @@ la funcion devuel el acceso si el usuario existe si no  lo deja en  login
 
 3- se importa appRouter  listo 
 
-# autenticaion de usuario 
+# autenticaion de usuario  privadas
 
 1-  en la funcion App() pasamos el contexto global por elemento AuthProvider de cada posible usuario de la aplicacion
 function App() {
@@ -159,4 +159,24 @@ export default function AuthProvider({children}) {
       { children }
      </AuthContext.Provider>
     );
-  }
+  } 
+
+  # autenticacion de rutas publicas
+
+1- se agrega el componet PublicRoute alas rutas publicas en appRouter
+<PublicRoute exact path="/Login" component={LoginPages} />
+<PublicRoute exact path="/Register" component={RegisterPages} />
+
+2- como tiene la misma logica de PrivateRoute se copia el misma funcion solo cambia la comprobacion  y el redireciomiento
+
+import { Redirect,Route } from "react-router-dom";
+import useAuth from "../user/useAuth";
+
+export default function PublicRoute(props) {
+    
+      const {user}= useAuth();
+       if(user) return <Redirect to="/Proyects" />
+      return (
+        <Route {...props} />
+      );
+}
