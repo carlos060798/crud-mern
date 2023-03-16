@@ -10,7 +10,7 @@ import useAuth from "../user/useAuth";
 export default function PrivateRoute({hasRole:role,...props}) {
 
   const {user}= useAuth();
-  if(role && user?.role !== role) return <Redirect to="/Login" />
+  if(role && user?.role !== role) return <Redirect to="/" />
    if(!user) return <Redirect to="/Login" />
   return (
     <Route {...props} />

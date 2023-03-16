@@ -10,6 +10,8 @@ import NotPages from '../PAGES/NotPages';
 import Layaut from '../Component/Layauts/layaut';
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
+import roles from '../help/roles'
+import rutas  from '../help/rutas'
 
 
 
@@ -27,13 +29,13 @@ export default function Routers() {
     <Router>
       <Layaut>
       <Switch>
-        <PublicRoute exact path="/" component={HomePages} />
-        <PublicRoute exact path="/Login" component={LoginPages} />
-        <PublicRoute exact path="/Register" component={RegisterPages} />
-        <PrivateRoute exact path="/Account" component={AccountPages} />
-        <PrivateRoute exact path="/Proyects" component={ProyectsPages} />
-        <PrivateRoute exact path="/Proyect/:Proyectid" component={ProyectPages} />
-        <PrivateRoute hasRole="admin" exact path="/Admin/Users" component={AdminusertPages} />
+        <PublicRoute exact path={rutas.HomePages} component={HomePages} />
+        <PublicRoute exact path={rutas.LoginPages}  component={LoginPages} />
+        <PublicRoute exact path={rutas.RegisterPages}  component={RegisterPages} />
+        <PrivateRoute exact path={rutas.AccountPage}  component={AccountPages} />
+        <PrivateRoute exact path={rutas.ProyectsPages} component={ProyectsPages} />
+        <PrivateRoute exact path={rutas.ProyectPages()} component={ProyectPages} />
+        <PrivateRoute hasRole= {roles.admin} exact path={rutas.Admin.users} component={AdminusertPages} />
 
         <Route exact path="*" component={NotPages} />
       </Switch>

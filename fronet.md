@@ -192,3 +192,13 @@ export default function PrivateRoute({hasRole:role,...props})
 
 3- se valida si exite el rol o si es igual al referenciado  inicialmente
  if(role && user?.role !== role) return <Redirect to="/Login" />
+
+4 se  vuelven constantes los atributos de roles para eviatr errores de scopre mas adelante se crea el arcchivo
+roles js
+export default roles={
+ admin: '',
+ regular: 'regular',
+}
+
+5- se cambian en approuter el  hasRole 
+    <PrivateRoute hasRole= {roles.admin} exact path="/Admin/Users" component={AdminusertPages} />
