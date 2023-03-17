@@ -217,3 +217,23 @@ export default roles={
   }
 }
 export default rutas;
+
+# se crean funciones para  validar  como  si el usuario esta loguidado y se agregan al  authProvider
+ const isloggin =()=> !!user;
+   const hasRole=(role) =>  user?.role === role;
+1- se consume globalmete en el contextValue
+const contextValue={
+     user,
+     isloggin,
+     hasRole
+   }
+
+2- se cambia  las valdaciones en PrivateRoutes por la siguintes validaciones
+ const { hasRole, isloggin}= useAuth();
+  if(role && !hasRole(role)) return <Redirect to={rutas.HomePages} />
+   if(! isloggin()) return <Redirect to={rutas.LoginPages} />
+
+3-se cambia  las valdaciones en PublicRoute por la siguintes validaciones
+
+ const {isloggin}= useAuth();
+       if(isloggin()) return <Redirect to={rutas.ProyectsPages} />

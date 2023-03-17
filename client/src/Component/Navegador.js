@@ -1,8 +1,10 @@
 import{Navbar,Nav, NavDropdown} from 'react-bootstrap'
 import{NavLink}from 'react-router-dom'
 import  rutas  from '../help/rutas';
+import useAuth from "../user/useAuth";
 
 export default function Navigetor() {
+  const { loginot} =useAuth();
   return (
     <Navbar
       collapseOnSelect
@@ -25,6 +27,7 @@ export default function Navigetor() {
           <Nav.Link  as={NavLink} to={rutas.LoginPages}>Inicio seccion</Nav.Link>
           <Nav.Link as={NavLink} to={rutas.RegisterPages}>Registro</Nav.Link>
           <Nav.Link as={NavLink} to={rutas.AccountPage}> Mi cuenta</Nav.Link>
+          <Nav.Link  to={rutas.AccountPage} onClick={ loginot}> Cerrar seccion</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

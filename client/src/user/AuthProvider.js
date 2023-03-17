@@ -13,8 +13,12 @@ export const AuthContext=createContext()
 
 export default function AuthProvider({children}) {
    
-  //const [user, setUser] = useState(null);
- const [user, setUser] = useState({id:1,role: roles.admin});
+ const [user, setUser] = useState(null);
+
+ //funciones que verifique  la creacion de usuario
+
+  const loggin=(usercredencial)=>setUser({id:1,role: roles.regular})
+  const loginot=()=>setUser(null)
 
 
   //funciones de verificacion de usuario y rol
@@ -25,7 +29,9 @@ export default function AuthProvider({children}) {
   const contextValue={
      user,
      isloggin,
-     hasRole
+     hasRole,
+     loggin,
+     loginot
    }
     
     return (
