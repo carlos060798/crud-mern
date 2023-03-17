@@ -202,3 +202,18 @@ export default roles={
 
 5- se cambian en approuter el  hasRole 
     <PrivateRoute hasRole= {roles.admin} exact path="/Admin/Users" component={AdminusertPages} />
+
+
+# se cambian las rutas en constantes y se cambian en el router y en el navigator
+ const rutas = {
+  HomePages: "/",
+  LoginPages: "/Login",
+  RegisterPages: "/Register",
+  AccountPage: "/Account",
+  ProyectsPages: "/Proyects",
+  ProyectPages: (Projectid)=>( Projectid ? `/Proyects/:${Projectid}`:"/Proyects/:Proyectid"),
+  Admin: {
+   users: "/Admin/Users",
+  }
+}
+export default rutas;

@@ -6,12 +6,14 @@
  */
 import { Redirect,Route } from "react-router-dom";
 import useAuth from "../user/useAuth";
+import rutas  from '../help/rutas'
+
 
 export default function PrivateRoute({hasRole:role,...props}) {
 
-  const {user}= useAuth();
-  if(role && user?.role !== role) return <Redirect to="/" />
-   if(!user) return <Redirect to="/Login" />
+  const { hasRole, isloggin}= useAuth();
+  if(role && !hasRole(role)) return <Redirect to={rutas.HomePages} />
+   if(! isloggin()) return <Redirect to={rutas.LoginPages} />
   return (
     <Route {...props} />
   );
