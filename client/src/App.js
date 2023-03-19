@@ -1,7 +1,7 @@
-import Routers from "./router/appRouter";
+import AppRouters from "./router/appRouter";
 import AuthProvider from "./user/AuthProvider";
-
-
+import {BrowserRouter as Router} from 'react-router-dom'
+import Layaut from './Component/Layauts/layaut';
 /*
 * @module{<AuthProvider>} le da al apalicaicon un contesto global para consumir
  a los hijos dierecto del componete <ROUTERS>
@@ -10,9 +10,13 @@ import AuthProvider from "./user/AuthProvider";
 export default function App() {
   return (
     <div>
-      <AuthProvider>
-        <Routers />
-      </AuthProvider>
+      <Router>
+        <AuthProvider>
+        <Layaut>
+          <AppRouters />
+          </Layaut>
+        </AuthProvider>
+      </Router>
     </div>
   );
 }
